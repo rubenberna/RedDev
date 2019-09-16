@@ -1,0 +1,22 @@
+.img-frame {
+  cursor: pointer;
+  position: relative;
+  padding: 3px;
+  img {
+    max-height: 330px;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: all 1s;
+    &:hover {
+      filter: grayscale(0);
+    }
+  }
+  .img-frame-name {
+    position: absolute;
+    margin: 0 auto;
+    bottom: 5%;
+    color: white;
+    width: 100%;
+    text-align: center;
+  }
+}
