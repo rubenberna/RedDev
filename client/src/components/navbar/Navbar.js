@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, NavItem } from 'react-materialize'
+import { Navbar } from 'react-materialize'
 
 import './navbar.scss'
 
@@ -8,12 +8,12 @@ class Nav extends Component {
   render() {
     return(
       <Navbar brand={<Link to='/'>RedCarrots</Link>} alignLinks="right">
-        <NavItem href="">
+        <Link to='/ongoing'>
           Ongoing projects
-        </NavItem>
-        <NavItem href="components.html">
+        </Link>
+        <Link to='/login'>
           Login
-        </NavItem>
+        </Link>
       </Navbar>
     )
   }

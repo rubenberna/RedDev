@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import { addTask } from '../../modules/dbQueries'
 import { TextInput, Textarea, Toast, Button } from 'react-materialize'
 import MenuDropdown from './Dropdown'
 
@@ -9,7 +10,7 @@ import './form.scss'
 class NewTaskForm extends Component {
   state = {
     title: null,
-    email: null,
+    requester: null,
     description: null,
     type: null,
     ready: false,
@@ -29,6 +30,15 @@ class NewTaskForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    const { title, requester, description, type } = this.state
+    const task = {
+      title,
+      requester,
+      description,
+      type,
+      status: 'ongoing'
+    }
+    addTask(task)
     this.setState({ ready: true  })
   }
 
@@ -67,7 +77,7 @@ class NewTaskForm extends Component {
         <h5>New task</h5>
           <TextInput label='title' onChange={e => this.handleChange('title', e)}/>
           <MenuDropdown setType={ this.handleSelectType }/>
-          <TextInput email validate label="your email" onChange={e => this.handleChange('email', e)}/>
+          <TextInput email validate label="your email" onChange={e => this.handleChange('requester', e)}/>
           <Textarea label='description'onChange={e => this.handleChange('description', e)} />
           {this.renderButton()}
       </div>

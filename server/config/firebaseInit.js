@@ -6,7 +6,9 @@ const db = firebase.firestore();
 
 // Shortcuts for db collections
 const developers = db.collection('developers')
+const tasks = db.collection('tasks')
 
 module.exports = {
-  developers
+  developers,
+  tasks
 }
