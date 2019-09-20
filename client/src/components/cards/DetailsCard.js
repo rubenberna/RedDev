@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import TaskChip from '../chips/Chip'
 
-const DetailsCard = ({dev}) => {
+class DetailsCard extends Component {
 
-  const renderSkillList = () => {
+  state = {
+  }
+
+  skillsList = () => {
+    const { dev } = this.props
     if(dev.skills) return  (
       dev.skills.map((skill, i) =>
         <li key={i}>{skill}</li>
@@ -11,17 +15,20 @@ const DetailsCard = ({dev}) => {
     )
   }
 
-  return(
-    <div className='details-card'>
-      <h6><span className='details-card-spec'>Name: </span>{dev.name}</h6>
-      <h6><span className='details-card-spec'>Started: </span>{dev.started}</h6>
-      <h6><span className='details-card-spec'>Introduction: </span>{dev.intro}</h6>
-      <h6><span className='details-card-spec'>Tech skills:</span></h6>
-        { renderSkillList() }
-      <h6><span className='details-card-spec'>Ongoing Projects:</span></h6>
-      <TaskChip/>
-    </div>
-  )
+  render () {
+    const { dev, tasks } = this.props
+    return(
+      <div className='details-card'>
+        <h6><span className='details-card-spec'>Name: </span>{dev.name}</h6>
+        <h6><span className='details-card-spec'>Started: </span>{dev.started}</h6>
+        <h6><span className='details-card-spec'>Introduction: </span>{dev.intro}</h6>
+        <h6><span className='details-card-spec'>Tech skills:</span></h6>
+          { this.skillsList() }
+        <h6><span className='details-card-spec'>Ongoing Projects:</span></h6>
+        <TaskChip taskList={tasks}/>
+      </div>
+    )
+  }
 }
 
 export default DetailsCard;

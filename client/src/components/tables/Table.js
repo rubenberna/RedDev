@@ -17,6 +17,7 @@ class TableTasks extends Component {
               <th data-field="title">Title</th>
               <th data-field="requester">Requester</th>
               <th data-field="dev">Developer</th>
+              <th data-field="date">Reqest Date</th>
               <th data-field="status">Status</th>
             </tr>
           </thead>
@@ -39,6 +40,7 @@ class TableTasks extends Component {
             <td>{ task.title }</td>
             <td>{ task.requester }</td>
             <td onClick={ e => this.seeDevProfile(task.dev) }>{ task.dev || '' }</td>
+            <td>{ task.reqDate || '' }</td>
             <td>{ task.status }</td>
           </tr>
         </tbody>
