@@ -30,3 +30,10 @@ export const findTasksPerDev = async (name) => {
   })
   return res.data
 }
+
+export const finishTask = async (task) => {
+  let res = await axios.post('/api/firebase/finishTask', {
+    task
+  })
+  return res.data
+}

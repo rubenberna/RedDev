@@ -44,7 +44,7 @@ class TableTasks extends Component {
     const { list } = this.props;
     return list.map((task, index) => {
       return (
-        <tbody key={index} style={{ cursor: 'default' }}>
+        <tbody key={index} style={{ cursor: 'pointer' }}>
           <tr>
             <td onClick={ e => this.viewTaskDetails(task) }>{ task.title }</td>
             <td>{ task.requester }</td>

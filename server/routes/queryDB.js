@@ -39,4 +39,14 @@ router.post('/findTasksPerDev', async (req, res) => {
   res.status(201).send(record)
 })
 
+// Mark a task as completed
+router.post('/finishTask', async (req, res) => {
+  const { task } = req.body
+  const snapshot = await firebase.tasks.where('title', '==', task.title).where('reqDate', '==', task.reqDate).get()
+  const [ recordId ] = snapshot.docs.map(doc => doc.id)
+  let taskRef = firebase.tasks.doc(recordId)
+  taskRef.update({ status: 'complete' })
+  res.status(201).send('success')
+})
+
 module.exports = router
