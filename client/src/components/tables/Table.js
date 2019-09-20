@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { withRouter } from 'react-router-dom'
+
 import { Table } from "react-materialize"
 import Loader from '../loader/Loader'
 
@@ -24,15 +26,19 @@ class TableTasks extends Component {
     }
   }
 
+  seeDevProfile = (dev) => {
+    if (dev) this.props.history.push(`/profile/${dev}`)
+  }
+
   renderTabeBody = () => {
     const { list } = this.props;
     return list.map((task, index) => {
       return (
-        <tbody key={index}>
+        <tbody key={index} style={{ cursor: 'default' }}>
           <tr>
             <td>{ task.title }</td>
             <td>{ task.requester }</td>
-            <td>{ task.dev || '' }</td>
+            <td onClick={ e => this.seeDevProfile(task.dev) }>{ task.dev || '' }</td>
             <td>{ task.status }</td>
           </tr>
         </tbody>
@@ -49,4 +55,4 @@ class TableTasks extends Component {
   }
 }
 
-export default TableTasks;
+export default withRouter(TableTasks);

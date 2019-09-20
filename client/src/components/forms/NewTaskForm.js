@@ -36,7 +36,8 @@ class NewTaskForm extends Component {
       requester,
       description,
       type,
-      status: 'ongoing'
+      status: 'ongoing',
+      dev: ''
     }
     addTask(task)
     this.setState({ ready: true  })

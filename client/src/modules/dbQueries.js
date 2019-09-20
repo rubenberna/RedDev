@@ -16,3 +16,10 @@ export const addTask = async (task) => {
   })
   return res.data
 }
+
+export const findDev = async (name) => {
+  let res = await axios.post('/api/firebase/dev', {
+    name
+  })
+  return res.data
+}
