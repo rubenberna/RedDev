@@ -10,7 +10,6 @@ class ImageCard extends Component {
     return (
       <div className='img-frame' onClick={ e => this.props.history.push(`/profile/${dev.name}`) }>
         <img alt={ dev.name } src={ dev.photo } />
-        <h5 className='img-frame-name'>{dev.name}</h5>
       </div>
     )
   }

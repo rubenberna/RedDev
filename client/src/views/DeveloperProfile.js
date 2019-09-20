@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
 import { findDev } from '../modules/dbQueries'
+
+import ProfileCard from '../components/cards/ProfileCard'
 
 class DeveloperProfile extends Component {
 
@@ -20,8 +21,8 @@ class DeveloperProfile extends Component {
   }
   render() {
     return(
-      <div>
-        Hello
+      <div className='developer-profile container'>
+        <ProfileCard profile={ this.state }/>
       </div>
     )
   }
