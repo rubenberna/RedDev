@@ -5,6 +5,7 @@ import Nav from '../components/navbar/Navbar'
 import Home from '../views/Home'
 import OngoingProjects from '../views/OngoingProjects'
 import DeveloperProfile from '../views/DeveloperProfile'
+import TaskView from '../views/TaskView'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" exact component={Home}/>
           <Route path="/ongoing" component={OngoingProjects}/>
           <Route path="/profile/:name" component={DeveloperProfile}/>
+          <Route path="/task/:title" component={TaskView}/>
         </>
       </BrowserRouter>
     </>

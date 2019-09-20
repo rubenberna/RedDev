@@ -6,7 +6,6 @@ import MenuDropdown from './Dropdown'
 
 import './form.scss'
 
-
 class NewTaskForm extends Component {
   state = {
     title: null,
@@ -77,11 +76,11 @@ class NewTaskForm extends Component {
     return(
       <div className='task-form'>
         <h5>New task</h5>
-          <TextInput label='title' onChange={e => this.handleChange('title', e)}/>
-          <MenuDropdown setType={ this.handleSelectType }/>
-          <TextInput email validate label="your email" onChange={e => this.handleChange('requester', e)}/>
-          <Textarea label='description'onChange={e => this.handleChange('description', e)} />
-          {this.renderButton()}
+        <TextInput  label='title' onChange={e => this.handleChange('title', e)}/>
+        <MenuDropdown setType={ this.handleSelectType }/>
+        <TextInput email validate label="your email" onChange={e => this.handleChange('requester', e)}/>
+        <Textarea label='description'onChange={e => this.handleChange('description', e)} />
+        {this.renderButton()}
       </div>
     )
   }

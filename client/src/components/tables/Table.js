@@ -1,7 +1,9 @@
 import React, { Component } from "react"
+import moment from 'moment'
 import { withRouter } from 'react-router-dom'
-
 import { Table } from "react-materialize"
+
+import './table.scss'
 import Loader from '../loader/Loader'
 
 class TableTasks extends Component {
@@ -17,7 +19,7 @@ class TableTasks extends Component {
               <th data-field="title">Title</th>
               <th data-field="requester">Requester</th>
               <th data-field="dev">Developer</th>
-              <th data-field="date">Reqest Date</th>
+              <th data-field="date">Date</th>
               <th data-field="status">Status</th>
             </tr>
           </thead>
@@ -27,8 +29,15 @@ class TableTasks extends Component {
     }
   }
 
-  seeDevProfile = (dev) => {
+  viewDevProfile = (dev) => {
     if (dev) this.props.history.push(`/profile/${dev}`)
+  }
+
+  viewTaskDetails = (task) => {
+    this.props.history.push({
+      pathname: `/task/${task.title}`,
+      state: { task }
+    })
   }
 
   renderTabeBody = () => {
@@ -37,11 +46,11 @@ class TableTasks extends Component {
       return (
         <tbody key={index} style={{ cursor: 'default' }}>
           <tr>
-            <td>{ task.title }</td>
+            <td onClick={ e => this.viewTaskDetails(task) }>{ task.title }</td>
             <td>{ task.requester }</td>
-            <td onClick={ e => this.seeDevProfile(task.dev) }>{ task.dev || '' }</td>
-            <td>{ task.reqDate || '' }</td>
-            <td>{ task.status }</td>
+            <td onClick={ e => this.viewDevProfile(task.dev) }>{ task.dev || '' }</td>
+            <td>{ moment(task.reqDate).format("MMM Do")  || '' }</td>
+            <td className={task.status === 'ongoing' ? 'ongoing' : 'complete'}>{ task.status }</td>
           </tr>
         </tbody>
       )}

@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Chip } from 'react-materialize'
-import { findTasksPerDev } from '../../modules/dbQueries'
 
 const TaskChip = ({taskList}) => {
   return(
