@@ -16,7 +16,7 @@ class Galery extends Component {
 
   renderGallery = () => {
     return this.state.devs.map(dev => {
-      return (<ImageCard dev={dev} key={dev.name} />)
+      return (<ImageCard dev={dev} key={dev.name} flashy={true} />)
     })
   }
 

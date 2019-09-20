@@ -3,24 +3,18 @@ import { withRouter } from 'react-router-dom'
 
 import './card.scss'
 
-class ImageCard extends Component {
+const ImageCard = (props) => {
+  const { dev, flashy } = props
 
-  renderCard = () => {
-    const { dev } = this.props
-    return (
-      <div className='img-frame' onClick={ e => this.props.history.push(`/profile/${dev.name}`) }>
-        <img alt={ dev.name } src={ dev.photo } />
-      </div>
-    )
-  }
-
-  render() {
-    return(
-      <>
-        {this.renderCard()}
-      </>
-    )
-  }
+  return(
+    <>
+    <div
+      className={ flashy ? 'img-frame flashy' : 'img-frame' }
+      onClick={ e => props.history.push(`/profile/${dev.name}`) }>
+      <img alt={ dev.name } src={ dev.photo } />
+    </div>
+    </>
+  )
 }
 
 export default withRouter(ImageCard);
