@@ -17,9 +17,9 @@ class TableTasks extends Component {
           <thead>
             <tr>
               <th data-field="title">Title</th>
-              <th data-field="requester">Requester</th>
-              <th data-field="dev">Developer</th>
-              <th data-field="date">Date</th>
+              <th data-field="requester">By who</th>
+              <th data-field="dev">Assigned to</th>
+              <th data-field="date">Requested</th>
               <th data-field="status">Status</th>
             </tr>
           </thead>
