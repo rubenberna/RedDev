@@ -3,6 +3,7 @@ import { getDevs } from '../../modules/dbQueries'
 
 import './galery.scss'
 import ImageCard from '../cards/ImageCard'
+import Loader from '../loader/Loader'
 
 class Galery extends Component {
   state = {
@@ -15,9 +16,14 @@ class Galery extends Component {
   }
 
   renderGallery = () => {
-    return this.state.devs.map(dev => {
-      return (<ImageCard dev={dev} key={dev.name} flashy={true} />)
-    })
+    const {devs} = this.state
+    console.log(!devs.length);
+    if (!devs.length) return <Loader/>
+    else {
+      return devs.map(dev => {
+        return (<ImageCard dev={dev} key={dev.name} flashy={true} />)
+      })
+    }
   }
 
   render() {
