@@ -24,6 +24,10 @@ class TaskView extends Component {
     if (res === 'success') this.props.history.push('/ongoing')
   }
 
+  viewDevProfile = (dev) => {
+    if (dev) this.props.history.push(`/profile/${dev}`)
+  }
+
   render() {
     const { task } = this.props.location.state
     return(
@@ -35,7 +39,7 @@ class TaskView extends Component {
           <h6><span className='task-spec'>When? </span>{moment(task.reqDate).format("MMM Do")}</h6>
           <h6><span className='task-spec'>Description: </span>{task.description}</h6>
           <h6><span className='task-spec'>Type: </span>{task.type}</h6>
-          <h6><span className='task-spec'>Assigned to: </span>{task.dev ? task.dev : ''}</h6>
+          <h6><span className='task-spec'>Assigned to: </span><span style={{ cursor: 'pointer' }} onClick={ e => this.viewDevProfile(task.dev) }>{task.dev ? task.dev : ''}</span></h6>
           <h6><span className='task-spec'>Status: </span><span className={task.status === 'ongoing' ? 'ongoing' : 'complete'}>{task.status}</span></h6>
         </div>
         { this.renderFinishButton() }

@@ -17,7 +17,6 @@ class Galery extends Component {
 
   renderGallery = () => {
     const {devs} = this.state
-    console.log(!devs.length);
     if (!devs.length) return <Loader/>
     else {
       return devs.map(dev => {
@@ -29,7 +28,10 @@ class Galery extends Component {
   render() {
     return(
       <div className='gallery'>
-        { this.renderGallery() }
+        <h4>Meet our team</h4>
+        <div className='gallery-images'>
+          { this.renderGallery() }
+        </div>
       </div>
     )
   }
