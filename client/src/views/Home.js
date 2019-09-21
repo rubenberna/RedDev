@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     return(
       <div className='home container'>
-        <Gallery/>
+        <Gallery devs={this.props.devs} />
         <NewTaskForm/>
       </div>
     )

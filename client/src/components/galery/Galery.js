@@ -1,22 +1,13 @@
 import React, { Component } from 'react'
-import { getDevs } from '../../modules/dbQueries'
 
 import './galery.scss'
 import ImageCard from '../cards/ImageCard'
 import Loader from '../loader/Loader'
 
 class Galery extends Component {
-  state = {
-    devs: []
-  }
-
-  async componentDidMount() {
-    const devs = await getDevs()
-    this.setState({ devs })
-  }
 
   renderGallery = () => {
-    const {devs} = this.state
+    const {devs} = this.props
     if (!devs.length) return <Loader/>
     else {
       return devs.map(dev => {

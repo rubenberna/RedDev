@@ -54,7 +54,7 @@ class NewTaskForm extends Component {
         <Toast
           waves="light"
           style={{marginRight: '5px'}}
-          options={{html: 'Form incomplete'}}>
+          options={{html: 'New task incomplete'}}>
           Submit
         </Toast>
       )

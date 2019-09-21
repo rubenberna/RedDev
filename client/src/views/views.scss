@@ -33,3 +33,20 @@
     background: #c62828 !important;
   }
 }
+
+.login {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .wrong {
+    position: absolute;
+    background: black;
+    color: white;
+    padding: 16px;
+    top: 1px;
+    right: 5px;
+  }
+}
