@@ -28,7 +28,7 @@ class TableTasks extends Component {
                 <th data-field="status">Status</th>
               </tr>
             </thead>
-            { this.renderTabeBody() }
+            { this.renderTaskBody() }
           </Table>
         </div>
       )
@@ -56,7 +56,7 @@ class TableTasks extends Component {
     })
   }
 
-  renderTabeBody = () => {
+  renderTaskBody = () => {
     let taskList = []
     const { list } = this.props;
 

@@ -19,6 +19,11 @@
 
 .profile-card {
   display: flex;
+  flex-direction: column;
+  .profile-card-frame {
+    display: flex;
+    
+  }
 
   .details-card {
     margin-left: 15px;

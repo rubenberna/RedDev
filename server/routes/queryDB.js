@@ -34,7 +34,7 @@ router.post('/tasks', async (req, res) => {
 // Get all ongoing tasks per developer
 router.post('/findTasksPerDev', async (req, res) => {
   const { name } = req.body
-  const snapshot = await firebase.tasks.where('dev', '==', name).where('status', '==', "ongoing").get()
+  const snapshot = await firebase.tasks.where('dev', '==', name).get()
   const record = snapshot.docs.map(doc => doc.data())
   res.status(201).send(record)
 })
