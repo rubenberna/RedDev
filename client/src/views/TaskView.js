@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
 import { Button } from 'react-materialize'
-import { finishTask } from '../modules/dbQueries'
+import { finishTask, assignTask } from '../modules/dbQueries'
+import RadioButtons from '../components/forms/RadioButtons'
 
 class TaskView extends Component {
 
   renderFinishButton = () => {
     const { task } = this.props.location.state
-    if (task.status === 'ongoing') return (
+    const { userLoggedIn } = this.props
+    if (task.status === 'ongoing' && userLoggedIn && userLoggedIn.name === task.dev) return (
       <Button
         type="submit"
         waves="light"
@@ -28,6 +30,22 @@ class TaskView extends Component {
     if (dev) this.props.history.push(`/profile/${dev}`)
   }
 
+  renderAssignSelection = () => {
+    const { task } = this.props.location.state
+    const { userLoggedIn } = this.props
+    if (userLoggedIn && userLoggedIn.admin && !task.dev) return <RadioButtons assign={this.assignTask}/>
+  }
+
+  assignTask = async (devName) => {
+    const { task } = this.props.location.state
+    const taskObj = {
+      task,
+      dev: devName
+    }
+    await assignTask(taskObj)
+    this.props.history.push('/ongoing')
+  }
+
   render() {
     const { task } = this.props.location.state
     return(
@@ -42,6 +60,7 @@ class TaskView extends Component {
           <h6><span className='task-spec'>Assigned to: </span><span style={{ cursor: 'pointer' }} onClick={ e => this.viewDevProfile(task.dev) }>{task.dev ? task.dev : ''}</span></h6>
           <h6><span className='task-spec'>Status: </span><span className={task.status === 'ongoing' ? 'ongoing' : 'complete'}>{task.status}</span></h6>
         </div>
+        { this.renderAssignSelection() }
         { this.renderFinishButton() }
       </div>
     )

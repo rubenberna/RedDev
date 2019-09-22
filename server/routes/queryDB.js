@@ -49,4 +49,17 @@ router.post('/finishTask', async (req, res) => {
   res.status(201).send('success')
 })
 
+
+// Assign task
+router.post('/assignTask', async (req, res) => {
+  const { taskObj } = req.body
+  const snapshot = await firebase.tasks.where('title', '==', taskObj.task.title).where('reqDate', '==', taskObj.task.reqDate).get()
+  const [ recordId ] = snapshot.docs.map(doc => doc.id)
+  let taskRef = firebase.tasks.doc(recordId)
+  taskRef.update({ dev: taskObj.dev })
+  res.status(201).send('success')
+})
+
+
+
 module.exports = router

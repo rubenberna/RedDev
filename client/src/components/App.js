@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   logoutUser = () => {
-    console.log('logged out');
     localStorage.removeItem('user')
     this.setState({
       user: null
@@ -55,7 +54,7 @@ class App extends Component {
             />
             <Route
               path="/task/:title"
-              component={TaskView}
+              render={props => <TaskView {...props} userLoggedIn={this.state.user} />}
             />
             <Route
               path="/login"
