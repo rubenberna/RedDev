@@ -8,7 +8,7 @@ const ProfileCard = (props) => {
   return(
     <div className='profile-card'>
       <div className='profile-card-frame'>
-        <ImageCard dev={props.profile} />
+        <ImageCard dev={props.profile} bigger={true}/>
         <DetailsCard dev={props.profile} tasks={props.taskList}/>
       </div>
       <TableCompleted tasks={props.taskList} />

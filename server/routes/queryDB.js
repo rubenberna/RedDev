@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const  firebase = require ('../config/firebaseInit')
+const sendEmail = require('../sendEmail');
 
 // Get all developers
 router.get('/devs', async (req, res) => {
@@ -28,6 +29,7 @@ router.get('/tasks', async (req, res) => {
 router.post('/tasks', async (req, res) => {
   const { task } = req.body
   firebase.tasks.add({...task})
+  sendEmail.taskCreated(task)
   res.status(201).send(`Task ${task.title} saved`)
 })
 
@@ -46,6 +48,7 @@ router.post('/finishTask', async (req, res) => {
   const [ recordId ] = snapshot.docs.map(doc => doc.id)
   let taskRef = firebase.tasks.doc(recordId)
   taskRef.update({ status: 'complete' })
+  sendEmail.taskFinished(task)
   res.status(201).send('success')
 })
 
@@ -57,6 +60,7 @@ router.post('/assignTask', async (req, res) => {
   const [ recordId ] = snapshot.docs.map(doc => doc.id)
   let taskRef = firebase.tasks.doc(recordId)
   taskRef.update({ dev: taskObj.dev })
+  sendEmail.taskAssigned(taskObj)
   res.status(201).send('success')
 })
 

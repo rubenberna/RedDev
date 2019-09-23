@@ -2,8 +2,12 @@
   cursor: pointer;
   position: relative;
   padding: 3px;
+  height: 100%;
+  display: flex;
+  align-items: center;
   img {
-    max-height: 330px;
+    height: 340px;
+    width: 170px;
     object-fit: cover;
   }
 
@@ -22,7 +26,7 @@
   flex-direction: column;
   .profile-card-frame {
     display: flex;
-    
+
   }
 
   .details-card {
@@ -45,5 +49,13 @@
     &:hover {
       filter: grayscale(0);
     }
+  }
+}
+
+.bigger {
+  img {
+    margin-top: -2px;
+    height: 398px;
+    width: 316px;
   }
 }

@@ -8,7 +8,7 @@ import Loader from '../loader/Loader'
 
 class TableTasks extends Component {
   state = {
-    onlyOngoing: false
+    onlyOngoing: true
   }
 
   renderTable = () => {
