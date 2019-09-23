@@ -19,16 +19,16 @@ after_success:
   - docker push rubenberna/reddev-server
   - docker push rubenberna/reddev-client
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "eu-west-1"
-#   app: "reddev"
-#   env: "Ikzegop-env-1"
-#   bucket_name: "elasticbeanstalk-eu-west-1-305799247952"
-#   bucket_path: "reddev-docker-multi"
-#   on:
-#     branch: master
-#   access_key_id:
-#     secure: "$AWS_ACCESS_KEY"
-#   secret_access_key:
-#     secure: "$AWS_SECRET_KEY"
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "reddev"
+  env: "Reddev-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-305799247952"
+  bucket_path: "reddev-docker-multi"
+  on:
+    branch: master
+  access_key_id:
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
