@@ -31,7 +31,6 @@ class TaskView extends Component {
   }
 
   renderAssignSelection = () => {
-    const { task } = this.props.location.state
     const { userLoggedIn } = this.props
     if (userLoggedIn && userLoggedIn.admin) return <RadioButtons assign={this.assignTask}/>
   }

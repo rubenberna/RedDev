@@ -6,7 +6,7 @@
       "image": "docker.io/rubenberna/reddev-client",
       "hostname": "client",
       "essential": false,
-      "memory": 128
+      "memory": 200
     },
     {
       "name": "server",

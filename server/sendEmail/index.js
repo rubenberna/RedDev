@@ -1,7 +1,6 @@
 const triggerEmail = require('../config/nodemailer');
 
 const taskCreated = (task) => {
-
   const message = {
     from: '"RedCarrots" <dev@redcarrots.be>',
     to: '"Ruben" <ruben@redcarrots.be>, "RedCarrots" <dev@redcarrots.be>',
