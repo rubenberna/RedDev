@@ -25,7 +25,7 @@ deploy:
   app: "reddev"
   env: "Reddev-env"
   bucket_name: "elasticbeanstalk-eu-west-1-305799247952"
-  bucket_path: "reddev-docker-multi"
+  bucket_path: "reddev"
   on:
     branch: master
   access_key_id:
