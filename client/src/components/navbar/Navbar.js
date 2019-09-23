@@ -14,7 +14,7 @@ class Nav extends Component {
 
   render() {
     return(
-      <Navbar brand={<Link to='/'>RedCarrots</Link>} alignLinks="right">
+      <Navbar brand={<Link to='/'><span style={{ color: '#c62828' }}>Red</span>Carrots</Link>} alignLinks="right">
         <Link to='/ongoing'>
           Ongoing projects
         </Link>
