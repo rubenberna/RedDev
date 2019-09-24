@@ -12,9 +12,19 @@ class Nav extends Component {
     else return <NavItem onClick={ this.props.logout }>Logout</NavItem>
   }
 
+  renderDevPhoto = () => {
+    const { user } = this.props
+    if(user) return (
+      <div className='navbar-photo'>
+        <img alt={ user.name } src={ user.photo } />
+      </div>
+    )
+  }
+
   render() {
     return(
       <Navbar brand={<Link to='/'><span style={{ color: '#c62828' }}>Red</span>Carrots</Link>} alignLinks="right">
+      { this.renderDevPhoto() }
         <Link to='/ongoing'>
           Ongoing projects
         </Link>
