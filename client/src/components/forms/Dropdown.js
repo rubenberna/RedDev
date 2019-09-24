@@ -26,6 +26,9 @@ class MenuDropdown extends Component {
           <option value="development">
             Development
           </option>
+          <option value="bug">
+            Bug
+          </option>
         </Select>
       </>
     )

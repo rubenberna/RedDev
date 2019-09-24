@@ -10,9 +10,11 @@ class DetailsCard extends Component {
   skillsList = () => {
     const { dev } = this.props
     if(dev.skills) return  (
-      dev.skills.map((skill, i) =>
+      <ul>
+      { dev.skills.map((skill, i) =>
         <li key={i}>{skill}</li>
-      )
+      )}
+      </ul>
     )
   }
 
@@ -25,7 +27,7 @@ class DetailsCard extends Component {
         <h6><span className='details-card-spec'>Role: </span>{dev.role}</h6>
         <h6><span className='details-card-spec'>Introduction: </span>{dev.intro}</h6>
         <h6><span className='details-card-spec'>Tech skills:</span></h6>
-          { this.skillsList() }
+        { this.skillsList() }
         <h6><span className='details-card-spec'>Ongoing Projects:</span></h6>
         <TaskChip taskList={tasks}/>
       </div>

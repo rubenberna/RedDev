@@ -32,12 +32,17 @@
   .details-card {
     margin-left: 15px;
     background: #FBFFFE;
-    height: 400px;
+    min-height: 400px;
     width: 645px;
     padding: 30px;
     filter: drop-shadow(2px 4px 6px black);
     .details-card-spec {
       color: #ef6c00;
+    }
+    ul {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
     }
   }
 }
