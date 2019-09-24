@@ -13,3 +13,19 @@
 .table-completed {
   margin-top: 50px;
 }
+
+.table-row {
+  .intermitent {
+    display: none;
+  }
+  .stop {
+    display: block;
+    color: #b71c1c;
+    cursor: not-allowed;
+  }
+  &:hover {
+    .intermitent {
+      display: block;
+    }
+  }
+}

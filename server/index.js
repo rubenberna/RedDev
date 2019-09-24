@@ -9,7 +9,10 @@ app.use(cors())
 app.use(bodyParser.json())
 
 const firebase = require('./routes/queryDB');
+const poke = require('./routes/poke');
+
 app.use('/firebase', firebase)
+app.use('/poke', poke)
 
 app.get('/', (req, res) => {
   app.send('Hi')

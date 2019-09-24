@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const  firebase = require ('../config/firebaseInit')
+const firebase = require ('../config/firebaseInit')
 const sendEmail = require('../sendEmail');
 
 // Get all developers

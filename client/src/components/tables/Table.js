@@ -1,14 +1,15 @@
 import React, { Component } from "react"
-import moment from 'moment'
 import { withRouter } from 'react-router-dom'
-import { Table, Button } from "react-materialize"
+import moment from 'moment'
+import { pokeDev } from '../../modules/poke'
+import { Table, Button, Icon } from "react-materialize"
 
 import './table.scss'
 import Loader from '../loader/Loader'
 
 class TableTasks extends Component {
   state = {
-    onlyOngoing: true
+    onlyOngoing: true,
   }
 
   renderTable = () => {
@@ -56,6 +57,17 @@ class TableTasks extends Component {
     })
   }
 
+  poke = (index, task) => {
+    this.setState({[`index${index}`]: 'poked' })
+    pokeDev(task)
+  }
+
+  renderIcon = (index) => {
+    let position = `index${index}`
+    if (this.state[position] === 'poked') return <Icon className='stop'>notifications_off</Icon>
+    else return <Icon className='intermitent'>notifications_active</Icon>
+  }
+
   renderTaskBody = () => {
     let taskList = []
     const { list } = this.props;
@@ -71,7 +83,7 @@ class TableTasks extends Component {
     return taskList.map((task, index) => {
       return (
         <tbody key={index} style={{ cursor: 'pointer' }}>
-          <tr>
+          <tr className='table-row'>
             <td onClick={ e => this.viewTaskDetails(task) }>
               { task.title }
             </td>
@@ -91,6 +103,9 @@ class TableTasks extends Component {
             </td>
             <td className={task.status === 'ongoing' ? 'ongoing' : 'complete'}>
               { task.status }
+            </td>
+            <td onClick={e => this.poke(index, task) } >
+              { this.renderIcon(index) }
             </td>
           </tr>
         </tbody>

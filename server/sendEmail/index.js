@@ -56,8 +56,26 @@ const taskFinished = (task) => {
   triggerEmail(message)
 }
 
+const poke = (task) => {
+
+  const message = {
+    from: '"RedCarrots" <dev@redcarrots.be>',
+    to: `<${task.dev}@redcarrots.be>`,
+    subject: "You've been poked!",
+    html: `<p>Hi ${task.dev},</p>
+      <p>The requester ${task.requester} is looking for a conclusion on the task:</p>
+      <h4>${task.title}</h4>
+      <p>Could you please have a look and provide an update?</p>
+      <p>Thanks!</p>
+      <p>RedCarrots team</p>
+    `
+  }
+  triggerEmail(message)
+}
+
 module.exports = {
   taskCreated,
   taskAssigned,
-  taskFinished
+  taskFinished,
+  poke
 }
