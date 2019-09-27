@@ -16,14 +16,14 @@ class AddMessage extends Component {
   render() {
     return(
       <form className='add-message' onSubmit={ this.handleSubmit }>
-        Reply to {this.props.sendTo}
+        Reply to <strong>{this.props.sendTo}</strong>
         <div className='add-message-text'>
           <Icon>mode_edit</Icon>
           <Textarea onChange={e => this.setState({ msg: e.target.value })}/>
         </div>
         <div className='add-message-send'>
           <TextInput type='file' onChange={e => this.setState({ file: e.target.files[0]})}/>
-          <Button flat style={{ color: '#4caf50' }}>Send</Button>
+          <Button flat className='send-msg-btn'>Send</Button>
         </div>
       </form>
     )

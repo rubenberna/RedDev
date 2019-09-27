@@ -21,10 +21,11 @@
   justify-content: center;
   width: 700px;
   position: relative;
-  hr {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+  min-height: 90vh;
+  display: flex;
+  justify-content: flex-start;
+  .row {
+    width: 100%;
   }
   .task-details {
     margin-bottom: 50px;
@@ -33,7 +34,14 @@
     }
   }
   .finish-btn {
+    position: absolute;
+    bottom: 100px;
     background: #c62828 !important;
+  }
+  .tabs {
+    a.active {
+      color: rgb(198, 40, 40) !important;
+    }
   }
 }
 

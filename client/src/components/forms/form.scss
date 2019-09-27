@@ -22,14 +22,21 @@
   flex-direction: column;
   padding: 15px;
   margin-bottom: 60px;
-  min-width: 515px;
-  border: 2px solid;
+  margin-top: 30px;
   .add-message-text {
     display: flex;
     align-items: center;
   }
   .add-message-send {
     display: flex;
+    width: 60%;
     justify-content: space-between;
+  }
+  button {
+    border: 1px solid #4caf50;
+    color: #4caf50;
+  }
+  textarea {
+    min-width: 355px;
   }
 }
