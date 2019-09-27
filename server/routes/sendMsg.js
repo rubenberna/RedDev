@@ -11,11 +11,12 @@ router.post('/', async (req,res) => {
   const data = req.body
 
   let log = {
-    date: new Date,
+    sentDate: new Date(),
     from: data.from,
     taskId: data.id
-   }
-  firebase.logs.add({ log })
+  }
+
+  firebase.logs.add({ ...log })
   res.status(201).send('Email sent')
 })
 

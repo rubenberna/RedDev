@@ -74,12 +74,8 @@ router.post('/assignTask', async (req, res) => {
 // Get logs per task
 router.post('/fetchLogs', async (req, res) => {
   const {id } = req.body
-  // console.log(id);
   const snapshot = await firebase.logs.where('taskId', '==', id).get()
-  console.log(snapshot);
-
   const records = snapshot.docs.map(doc => doc.data())
-  // console.log(records);
   res.status(201).send(records)
 })
 

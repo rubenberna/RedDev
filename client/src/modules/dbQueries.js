@@ -46,7 +46,6 @@ export const assignTask = async (taskObj) => {
 }
 
 export const fetchLogs = async (id) => {
-  console.log(id);
   let res = await axios.post('/api/firebase/fetchLogs', {id})
   return res.data
 }
