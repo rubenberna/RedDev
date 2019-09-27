@@ -16,3 +16,20 @@
     margin-top: 13px;
   }
 }
+
+.add-message {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 60px;
+  min-width: 515px;
+  border: 2px solid;
+  .add-message-text {
+    display: flex;
+    align-items: center;
+  }
+  .add-message-send {
+    display: flex;
+    justify-content: space-between;
+  }
+}

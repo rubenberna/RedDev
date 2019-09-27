@@ -73,9 +73,34 @@ const poke = (task) => {
   triggerEmail(message)
 }
 
+const sendMsg = (msg) => {
+  console.log(msg.files);
+
+  const message = {
+    from: '"RedCarrots" <dev@redcarrots.be>',
+    to: `<${msg.body.to}>`,
+    attachments: [
+      {
+        filename: msg.files.file.name,
+        content: msg.files.file.data
+      }
+    ],
+    subject: `New msg from ${msg.body.from}` ,
+    html: `<p>Hi,</p>
+      <p>There's a new msg from ${msg.body.from} regarding the task: <h4>${msg.body.title}</h4></p>
+      <p>Message:</p>
+      <p><i>${msg.body.msg}</i></p>
+      <p>Thanks!</p>
+      <p>RedCarrots team</p>
+    `
+  }
+  triggerEmail(message)
+}
+
 module.exports = {
   taskCreated,
   taskAssigned,
   taskFinished,
-  poke
+  poke,
+  sendMsg
 }
