@@ -74,17 +74,21 @@ const poke = (task) => {
 }
 
 const sendMsg = (msg) => {
-  console.log(msg.files);
 
-  const message = {
-    from: '"RedCarrots" <dev@redcarrots.be>',
-    to: `<${msg.body.to}>`,
-    attachments: [
+  let attach
+  if (msg.files) {
+    attach = [
       {
         filename: msg.files.file.name,
         content: msg.files.file.data
       }
-    ],
+    ]
+  } else attach = null
+
+  const message = {
+    from: '"RedCarrots" <dev@redcarrots.be>',
+    to: `<${msg.body.to}>`,
+    attachments: attach,
     subject: `New msg from ${msg.body.from}` ,
     html: `<p>Hi,</p>
       <p>There's a new msg from ${msg.body.from} regarding the task: <h4>${msg.body.title}</h4></p>

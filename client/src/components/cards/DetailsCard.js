@@ -20,6 +20,7 @@ class DetailsCard extends Component {
 
   render () {
     const { dev, tasks } = this.props
+    
     return(
       <div className='details-card'>
         <h6><span className='details-card-spec'>Name: </span>{dev.name}</h6>

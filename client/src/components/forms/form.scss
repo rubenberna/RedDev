@@ -20,23 +20,27 @@
 .add-message {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  margin-bottom: 60px;
-  margin-top: 30px;
+  min-height: 290px;
+  justify-content: space-between;
   .add-message-text {
     display: flex;
     align-items: center;
   }
   .add-message-send {
     display: flex;
-    width: 60%;
+    width: 90%;
     justify-content: space-between;
   }
   button {
     border: 1px solid #4caf50;
     color: #4caf50;
+    transition: 0.5s all;
+    &:hover {
+      background: #4caf50;
+      color: white;
+    }
   }
   textarea {
-    min-width: 355px;
+    min-width: 514px;
   }
 }

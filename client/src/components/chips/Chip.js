@@ -22,7 +22,7 @@ const TaskChip = (props) => {
 
   return(
     <div>
-      {renderTasks()}
+      { renderTasks() }
     </div>
   )
 }

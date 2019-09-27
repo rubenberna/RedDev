@@ -14,7 +14,7 @@ const triggerEmail = (message) => {
     if (err) {
       console.log('Error occurred:' + err.message);
     }
-    else console.log(info);
+    // else console.log(info);
   })
 }
 

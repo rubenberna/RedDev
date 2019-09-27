@@ -9,6 +9,8 @@ export const sendMsg = async (msg) => {
   data.append('to', msg.sendTo)
   data.append('title', msg.title)
   data.append('msg', msg.msg)
+  data.append('taskDate', msg.taskDate)
+  data.append('id', msg.id)
 
   let res = await axios.post('/api/sendMsg', data)
   return res.data

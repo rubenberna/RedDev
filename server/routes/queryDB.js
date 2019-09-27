@@ -21,7 +21,11 @@ router.post('/dev', async (req, res) => {
 // Get all tasks
 router.get('/tasks', async (req, res) => {
   const snapshot = await firebase.tasks.get()
-  const records = snapshot.docs.map(doc => doc.data())
+  const records = snapshot.docs.map(doc => {
+    let task = doc.data()
+    task.id = doc.id
+    return task
+  })
   res.status(201).send(records)
 })
 
@@ -37,8 +41,12 @@ router.post('/tasks', async (req, res) => {
 router.post('/findTasksPerDev', async (req, res) => {
   const { name } = req.body
   const snapshot = await firebase.tasks.where('dev', '==', name).get()
-  const record = snapshot.docs.map(doc => doc.data())
-  res.status(201).send(record)
+  const records = snapshot.docs.map(doc => {
+    let task = doc.data()
+    task.id = doc.id
+    return task
+  })
+  res.status(201).send(records)
 })
 
 // Mark a task as completed
@@ -52,7 +60,6 @@ router.post('/finishTask', async (req, res) => {
   res.status(201).send('success')
 })
 
-
 // Assign task
 router.post('/assignTask', async (req, res) => {
   const { taskObj } = req.body
@@ -62,6 +69,18 @@ router.post('/assignTask', async (req, res) => {
   taskRef.update({ dev: taskObj.dev })
   sendEmail.taskAssigned(taskObj)
   res.status(201).send('success')
+})
+
+// Get logs per task
+router.post('/fetchLogs', async (req, res) => {
+  const {id } = req.body
+  // console.log(id);
+  const snapshot = await firebase.logs.where('taskId', '==', id).get()
+  console.log(snapshot);
+
+  const records = snapshot.docs.map(doc => doc.data())
+  // console.log(records);
+  res.status(201).send(records)
 })
 
 

@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+
 .home {
   min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+nav {
+  font-family: 'Mansalva', cursive;
 }
 
 .developer-profile {
@@ -25,10 +31,14 @@
   display: flex;
   justify-content: flex-start;
   .row {
+    margin-top: 30px;
     width: 100%;
+    background: white;
+    filter: drop-shadow(1px 1px 1px black);
+    min-height: 320px;
+    padding: 20px;
   }
   .task-details {
-    margin-bottom: 50px;
     .task-spec {
       font-weight: 600;
     }

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import moment from 'moment'
 import { Button, Tabs, Tab } from 'react-materialize'
 import RadioButtons from '../components/forms/RadioButtons'
 import AddMessage from '../components/forms/AddMessage'
 import { finishTask, assignTask } from '../modules/dbQueries'
 import { sendMsg } from '../modules/sendMsg'
 import TaskCard from '../components/cards/TaskCard'
+import Logs from '../components/tables/Logs'
 
 class TaskView extends Component {
 
@@ -55,7 +55,7 @@ class TaskView extends Component {
       <AddMessage
         sendTo={ userLoggedIn ? task.requester : `${task.dev}@redcarrots.be`} sendMessage={ this.sendMessage }
         from={ userLoggedIn ? `${task.dev}@redcarrots.be` : task.requester }
-        title={ task.title }
+        task={ task }
       />)
   }
 
@@ -70,13 +70,13 @@ class TaskView extends Component {
         <div className='task-view container'>
           <Tabs className="tab-demo z-depth-1">
             <Tab title="Details">
-              <TaskCard task={task}/>
+              <TaskCard task={task} viewDevProfile={this.viewDevProfile}/>
             </Tab>
             <Tab title="Message">
               { this.renderAddMessage() }
             </Tab>
             <Tab title="Logs">
-              Logs
+              <Logs task={task} />
             </Tab>
           </Tabs>
           { this.renderFinishButton() }
