@@ -20,8 +20,6 @@ class Logs extends Component {
 
   renderLogs = () => {
     const { logs } = this.state
-    console.log(logs);
-
     if (logs.length) {
       return logs.map((log, i) => {
         return (
