@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+
 .nav-wrapper {
   background: #424242;
+  a.brand-logo {
+    font-family: 'Mansalva', cursive;
+  }
 }
 
 .navbar-photo {

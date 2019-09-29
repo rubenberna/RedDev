@@ -32,12 +32,18 @@
     justify-content: space-between;
   }
   button {
-    border: 1px solid #4caf50;
-    color: #4caf50;
-    transition: 0.5s all;
-    &:hover {
-      background: #4caf50;
+    margin-top: -34px;
+    background: transparent;
+    color: gray;
+    &:focus {
       color: white;
+      background: #01579b;
+      filter: opacity(0.8);
+    }
+    &:hover {
+      color: white;
+      background: #01579b;
+      filter: opacity(0.8);
     }
   }
   textarea {

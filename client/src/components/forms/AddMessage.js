@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Textarea, TextInput, Icon } from 'react-materialize'
+import { Textarea, TextInput, Icon, Toast } from 'react-materialize'
 
 class AddMessage extends Component {
   state = {
@@ -14,6 +14,7 @@ class AddMessage extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.sendMessage(this.state)
+    this.props.fetchLogs()
   }
 
   render() {
@@ -28,7 +29,7 @@ class AddMessage extends Component {
       </div>
         <div className='add-message-send'>
           <TextInput type='file' onChange={e => this.setState({ file: e.target.files[0]})}/>
-          <Button flat className='send-msg-btn'>Send</Button>
+          <Toast options={{ html: 'Message sent!'}}>Send</Toast>
         </div>
       </form>
     )

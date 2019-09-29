@@ -3,12 +3,15 @@ import { withRouter } from 'react-router-dom'
 import { Button, Tabs, Tab } from 'react-materialize'
 import RadioButtons from '../components/forms/RadioButtons'
 import AddMessage from '../components/forms/AddMessage'
-import { finishTask, assignTask } from '../modules/dbQueries'
+import { finishTask, assignTask, fetchLogs } from '../modules/dbQueries'
 import { sendMsg } from '../modules/sendMsg'
 import TaskCard from '../components/cards/TaskCard'
 import Logs from '../components/tables/Logs'
 
 class TaskView extends Component {
+  state = {
+    logs: []
+  }
 
   renderFinishButton = () => {
     const { task } = this.props.location.state
@@ -63,8 +66,19 @@ class TaskView extends Component {
     sendMsg(msg)
   }
 
+  fetchLogs = async () => {
+    const { task } = this.props.location.state
+    const logs = await fetchLogs(task.id)
+    this.setState({logs: logs})
+  }
+
+  componentDidMount() {
+    this.fetchLogs()
+  }
+
   render() {
     const { task } = this.props.location.state
+    const { userLoggedIn } = this.props
     return(
       <>
         <div className='task-view container'>
@@ -73,10 +87,15 @@ class TaskView extends Component {
               <TaskCard task={task} viewDevProfile={this.viewDevProfile}/>
             </Tab>
             <Tab title="Message">
-              { this.renderAddMessage() }
+              <AddMessage
+                sendTo={ userLoggedIn ? task.requester : `${task.dev}@redcarrots.be`} sendMessage={ this.sendMessage }
+                from={ userLoggedIn ? `${task.dev}@redcarrots.be` : task.requester }
+                task={ task }
+                fetchLogs={this.fetchLogs}
+              />
             </Tab>
             <Tab title="Logs">
-              <Logs task={task} />
+              <Logs logs={this.state.logs}/>
             </Tab>
           </Tabs>
           { this.renderFinishButton() }
