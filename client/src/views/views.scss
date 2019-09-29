@@ -37,11 +37,7 @@
       font-weight: 600;
     }
   }
-  .finish-btn {
-    position: absolute;
-    bottom: 100px;
-    background: #c62828 !important;
-  }
+
   .tabs {
     a.active {
       color: #01579b;
@@ -76,4 +72,12 @@
     top: 1px;
     right: 5px;
   }
+}
+
+.finish-btn {
+  position: absolute;
+  bottom: 100px;
+  background: #c62828 !important;
+  right: 17%;
+  top: 20%;
 }

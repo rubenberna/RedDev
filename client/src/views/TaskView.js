@@ -51,17 +51,6 @@ class TaskView extends Component {
     this.props.history.push('/ongoing')
   }
 
-  renderAddMessage = () => {
-    const { userLoggedIn } = this.props
-    const { task } = this.props.location.state
-    return (
-      <AddMessage
-        sendTo={ userLoggedIn ? task.requester : `${task.dev}@redcarrots.be`} sendMessage={ this.sendMessage }
-        from={ userLoggedIn ? `${task.dev}@redcarrots.be` : task.requester }
-        task={ task }
-      />)
-  }
-
   sendMessage = (msg) => {
     sendMsg(msg)
   }
@@ -98,8 +87,8 @@ class TaskView extends Component {
               <Logs logs={this.state.logs}/>
             </Tab>
           </Tabs>
-          { this.renderFinishButton() }
         </div>
+        { this.renderFinishButton() }
         { this.renderAssignSelection() }
       </>
     )
