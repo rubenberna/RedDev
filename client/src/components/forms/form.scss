@@ -25,11 +25,36 @@
   .add-message-text {
     display: flex;
     align-items: center;
+    .no-msg-error {
+      border-bottom: 1px solid #c62828;
+    }
   }
   .add-message-send {
     display: flex;
     width: 90%;
     justify-content: space-between;
+    .add-message-send-file {
+      display: flex;
+      align-items: center;
+      button {
+        margin-bottom: -29px;
+        text-transform: lowercase !important;
+        color: gray;
+        &:hover {
+          background: transparent;
+          color: gray;
+        }
+        &:focus {
+          background: transparent;
+          color: gray;
+        }
+      }
+    }
+    .file-too-big {
+      font-size: 12px;
+      margin-left: 11px;
+      color: #c62828;
+    }
   }
   button {
     margin-top: -34px;

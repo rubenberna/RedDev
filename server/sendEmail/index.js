@@ -85,6 +85,8 @@ const sendMsg = (msg) => {
     ]
   } else attach = null
 
+  console.log(msg.body);
+
   const message = {
     from: '"RedCarrots" <dev@redcarrots.be>',
     to: `<${msg.body.to}>`,

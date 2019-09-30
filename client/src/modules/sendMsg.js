@@ -13,5 +13,6 @@ export const sendMsg = async (msg) => {
   data.append('id', msg.id)
 
   let res = await axios.post('/api/sendMsg', data)
+  console.log(res.data);
   return res.data
 }

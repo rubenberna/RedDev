@@ -12,7 +12,6 @@ class Login extends Component {
   validateUser = (user) => {
     const { devs, history, setDev } = this.props
     const dev = devs.find( dev => dev.email === user.email )
-    console.log(dev);
     if (!dev) this.setState({ wrongCredentials: true })
     else {
       if ( dev.password !== user.password ) {
