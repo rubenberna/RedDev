@@ -12,7 +12,7 @@ class Logs extends Component {
           <tbody key={i}>
             <tr className='table-row'>
               <td>
-                Date: { moment(log.date).format('MMMM Do YYYY') }
+                Date: { moment(log.date).format('MMMM Do YYYY, h:mm:ss') }
               </td>
               <td>
                 From: {log.from}
