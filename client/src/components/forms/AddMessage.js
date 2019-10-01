@@ -12,13 +12,15 @@ class AddMessage extends Component {
     file: '',
     msg: '',
     tooBig: false,
-    inputKey: Date.now()
+    inputKey: Date.now(),
+    disabled: false
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-      this.props.sendMessage(this.state)
-      this.props.fetchLogs()
+    this.props.sendMessage(this.state)
+    this.setState({ disabled: true })
+    this.props.fetchLogs()
   }
 
   handleFileUpload = (e) => {
@@ -40,13 +42,19 @@ class AddMessage extends Component {
   render() {
 
     return(
-      <form className='add-message' onSubmit={ this.handleSubmit }>
+      <form
+        className='add-message'
+        disabled={ this.state.disabled }
+        onSubmit={ this.handleSubmit }>
       <div>
         Reply to:
         <p><strong>{this.props.sendTo}</strong></p>
         <div className='add-message-text'>
           <Icon>mode_edit</Icon>
-          <Textarea onChange={e => this.setState({ msg: e.target.value })} />
+          <Textarea
+            onChange={e => this.setState({ msg: e.target.value })}
+            disabled={ this.state.disabled }
+          />
         </div>
       </div>
         <div className='add-message-send'>
