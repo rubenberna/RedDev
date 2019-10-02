@@ -11,7 +11,7 @@ router.post('/', async (req,res) => {
   const data = req.body
 
   let log = {
-    sentDate: new Date(),
+    sentDate: Date.now(),
     from: data.from,
     taskId: data.id
   }
