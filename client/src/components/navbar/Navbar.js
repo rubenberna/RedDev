@@ -15,9 +15,9 @@ class Nav extends Component {
   renderDevPhoto = () => {
     const { user } = this.props
     if(user) return (
-      <div className='navbar-photo'>
+      <Link className='navbar-photo' to={`/profile/${user.name}`}>
         <img alt={ user.name } src={ user.photo } />
-      </div>
+      </Link>
     )
   }
 
