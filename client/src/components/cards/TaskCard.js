@@ -10,12 +10,7 @@ class TaskCard extends Component {
         <hr/>
         <div className='task-details'>
           <h6><span className='task-spec'>Requester: </span>
-          <a
-          href={`mailto:${task.requester}?Subject=${task.title}`}
-          target="_blank"
-          rel="noopener noreferrer">
-          { task.requester }
-          </a>
+            { task.requester }
           </h6>
           <h6><span className='task-spec'>When? </span>{moment(task.reqDate).format("MMM Do")}</h6>
           <h6><span className='task-spec'>Description: </span>{task.description}</h6>
