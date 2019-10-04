@@ -46,10 +46,6 @@ class TableTasks extends Component {
     )
   }
 
-  viewDevProfile = (dev) => {
-    if (dev) this.props.history.push(`/profile/${dev}`)
-  }
-
   viewTaskDetails = (task) => {
     this.props.history.push({
       pathname: `/task/${task.title}`,
@@ -62,10 +58,10 @@ class TableTasks extends Component {
     pokeDev(task)
   }
 
-  renderIcon = (index) => {
+  renderIcon = (index, task) => {
     let position = `index${index}`
     if (this.state[position] === 'poked') return <Icon className='stop'>notifications_off</Icon>
-    else return <Icon className='intermitent'>notifications_active</Icon>
+    else return <div onClick={e => this.poke(index, task)}><Icon className='intermitent'>notifications_active</Icon></div>
   }
 
   renderTaskBody = () => {
@@ -87,25 +83,20 @@ class TableTasks extends Component {
             <td onClick={ e => this.viewTaskDetails(task) }>
               { task.title }
             </td>
-            <td>
-              <a
-                href={`mailto:${task.requester}?Subject=${task.title}`}
-                target="_blank"
-                rel="noopener noreferrer">
-                { task.requester }
-              </a>
+            <td onClick={ e => this.viewTaskDetails(task) }>
+              { task.requester }
             </td>
-            <td onClick={ e => this.viewDevProfile(task.dev) }>
+            <td onClick={ e => this.viewTaskDetails(task) }>
               { task.dev || '' }
             </td>
-            <td>
+            <td onClick={ e => this.viewTaskDetails(task) }>
               { moment(task.reqDate).format("MMM Do")  || '' }
             </td>
             <td className={task.status === 'ongoing' ? 'ongoing' : 'complete'}>
               { task.status }
             </td>
-            <td onClick={e => this.poke(index, task) } >
-              { this.renderIcon(index) }
+            <td>
+              { this.renderIcon(index, task) }
             </td>
           </tr>
         </tbody>
