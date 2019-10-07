@@ -11,6 +11,7 @@ const taskCreated = (task) => {
       <p><span><b>Requester:</b></span> ${task.requester}</p>
       <p><span><b>Type:</b></span> ${task.type}</p>
       <p><span><b>Description:</b></span> ${task.description}</p>
+      <p>Check our <a href="http://team.redcarrots.be/ongoing" target="_blank">ongoing projects</a>.</p>
       <p>Thanks!</p>
       <p>RedCarrots team</p>
     `
@@ -31,6 +32,7 @@ const taskAssigned = (taskObj) => {
       <p><span><b>Type:</b></span> ${taskObj.task.type}</p>
       <p><span><b>Description:</b></span> ${taskObj.task.description}</p>
       <p>We'll get it done as soon as possible!</p>
+      <p>Check our <a href="http://team.redcarrots.be/ongoing" target="_blank">ongoing projects</a>.</p>
       <p>RedCarrots team</p>
     `
   }
@@ -49,6 +51,7 @@ const taskFinished = (task) => {
       <p><span><b>Developer:</b></span> ${task.dev}</p>
       <p><span><b>Type:</b></span> ${task.type}</p>
       <p><span><b>Description:</b></span> ${task.description}</p>
+      <p>Check our <a href="http://team.redcarrots.be/ongoing" target="_blank">ongoing projects</a>.</p>
       <p>Thanks!</p>
       <p>RedCarrots team</p>
     `
@@ -96,6 +99,7 @@ const sendMsg = (msg) => {
       <p>There's a new msg from ${msg.body.from} regarding the task: <h4>${msg.body.title}</h4></p>
       <p>Message:</p>
       <p><i>${msg.body.msg}</i></p>
+      <p>Check our <a href="http://team.redcarrots.be/ongoing" target="_blank">ongoing projects</a>.</p>
       <p>Thanks!</p>
       <p>RedCarrots team</p>
     `
