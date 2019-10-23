@@ -12,6 +12,7 @@ const taskCreated = (task) => {
       <p><span><b>Type:</b></span> ${task.type}</p>
       <p><span><b>Description:</b></span> ${task.description}</p>
       <p>Check our <a href="http://team.redcarrots.be/ongoing" target="_blank">ongoing projects</a>.</p>
+      <p>Please use the 'Message' tab inside the task details to communicate.</p>
       <p>Thanks!</p>
       <p>RedCarrots team</p>
     `
@@ -33,6 +34,7 @@ const taskAssigned = (taskObj) => {
       <p><span><b>Description:</b></span> ${taskObj.task.description}</p>
       <p>We'll get it done as soon as possible!</p>
       <p>Check our <a href="http://team.redcarrots.be/ongoing" target="_blank">ongoing projects</a>.</p>
+      <p>Please use the 'Message' tab inside the task details to communicate.</p>
       <p>RedCarrots team</p>
     `
   }
@@ -52,6 +54,7 @@ const taskFinished = (task) => {
       <p><span><b>Type:</b></span> ${task.type}</p>
       <p><span><b>Description:</b></span> ${task.description}</p>
       <p>Check our <a href="http://team.redcarrots.be/ongoing" target="_blank">ongoing projects</a>.</p>
+      <p>Please use the 'Message' tab inside the task details to communicate.</p>
       <p>Thanks!</p>
       <p>RedCarrots team</p>
     `
@@ -69,6 +72,7 @@ const poke = (task) => {
       <p>The requester ${task.requester} is looking for a conclusion on the task:</p>
       <h4>${task.title}</h4>
       <p>Could you please have a look and provide an update?</p>
+      <p>Please use the 'Message' tab inside the task details to communicate.</p>
       <p>Thanks!</p>
       <p>RedCarrots team</p>
     `
@@ -88,8 +92,6 @@ const sendMsg = (msg) => {
     ]
   } else attach = null
 
-  console.log(msg.body);
-
   const message = {
     from: '"RedCarrots" <dev@redcarrots.be>',
     to: `<${msg.body.to}>`,
@@ -100,6 +102,7 @@ const sendMsg = (msg) => {
       <p>Message:</p>
       <p><i>${msg.body.msg}</i></p>
       <p>Check our <a href="http://team.redcarrots.be/ongoing" target="_blank">ongoing projects</a>.</p>
+      <p>Please use the 'Message' tab inside the task details to communicate.</p>
       <p>Thanks!</p>
       <p>RedCarrots team</p>
     `
